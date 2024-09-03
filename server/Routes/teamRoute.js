@@ -22,21 +22,50 @@ const transporter = nodemailer.createTransport({
 });
 
 const sendInvitationEmail = async (email, teamId) => {
-  const token = crypto.randomBytes(20).toString('hex');
-  const url = `${process.env.BASE_URL}/api/auth/invite-registration?token=${token}&teamId=${teamId}`;
+  try {
+    // Fetch the team and admin details
+    const team = await Team.findById(teamId).populate('admin');
+    if (!team) {
+      throw new Error('Team not found');
+    }
 
-  const mailOptions = {
-    from: process.env.EMAIL_USER,
-    to: email,
-    subject: 'Team Invitation',
-    html: `<p>You have been invited to join a team. Click <a href="${url}">here</a> to register and join the team.</p>`
-  };
+    const adminName = team.admin.name; // Assuming the admin has a 'name' field
+    const teamName = team.name;
+    const userStatus = 'Team Member'; // As specified in your request
+    const token = crypto.randomBytes(20).toString('hex');
+    const url = `${process.env.BASE_URL}/api/auth/invite-registration?token=${token}&teamId=${teamId}`;
 
-  await transporter.sendMail(mailOptions);
+    const mailOptions = {
+      from: process.env.EMAIL_USER,
+      to: email,
+      subject: 'Team Invitation to Join ' + teamName,
+      html: `
+        <div style="font-family: Arial, sans-serif; color: #333;">
+          <h2 style="color: #555;">You've been invited to join the team <strong>${teamName}</strong>!</h2>
+          <p>Hi,</p>
+          <p>You have been invited to join the team <strong>${teamName}</strong> by <strong>${adminName}</strong>. Your role in the team will be: <strong>${userStatus}</strong>.</p>
+          <p>Please click the button below to register and join the team:</p>
+          <a href="${url}" style="display: inline-block; padding: 10px 20px; margin-top: 10px; color: white; background-color: #007bff; text-decoration: none; border-radius: 5px;">Join Team</a>
+          <p>Or copy and paste the following link into your browser:</p>
+          <p><a href="${url}">${url}</a></p>
+          <hr>
+          <p style="font-size: 12px; color: #777;">Token: ${token}</p>
+          <p style="font-size: 12px; color: #777;">Team ID: ${teamId}</p>
+          <p style="font-size: 12px; color: #777;">If you did not expect this invitation, please ignore this email.</p>
+        </div>
+      `
+    };
 
-  // Save the invitation token to the database
-  await Invite.create({ token, teamId, email });
+    await transporter.sendMail(mailOptions);
+
+    // Save the invitation token to the database
+    await Invite.create({ token, teamId, email });
+  } catch (error) {
+    console.error('Error sending invitation email:', error);
+    throw error;
+  }
 };
+
 
 // Route to send an invitation
 router.post('/invite-member', verifyToken, async (req, res) => {
@@ -199,7 +228,6 @@ router.get('/:teamId', verifyToken, async (req, res) => {
       return res.status(404).json({ message: 'Team not found' });
     }
 
-    console.log('team detail is',team);
     res.status(200).json({ team });
   } catch (error) {
     console.error('Error fetching team details:', error);
