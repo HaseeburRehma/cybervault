@@ -1,0 +1,134 @@
+.font {
+    font-family: "Poppins", sans-serif;
+    /* font-family: "Kanit", sans-serif; */
+    color: #3A426D;
+}
+
+.mar{
+    margin-top: -10px;
+}
+
+.bgc{
+background-color: #2471d6;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.sidebar{
+    z-index: 100;
+}
+.position{
+    position: absolute;
+    top: -40%;
+    left: 85%;
+
+}
+.position2{
+    position: absolute;
+    bottom: -46%;
+    left: -25%;
+
+}
+
+.Tilt {
+    transition: transform 0.2s ease-in-out;
+}
+.Tilt:hover {
+    transform: scale(1.05);
+}
+/* NAVBAR */
+
+
+
+.nav-link:hover {
+    font-size: larger;
+    /* text-shadow: 0 0 8px white; */
+    transition: font-size 0.3s ease-in-out;
+}
+
+.nav-link::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    /* background: white; */
+    transition: width 0.3s ease-in-out, transform 0.3s ease-in-out;
+    transform: translateX(-50%);
+}
+
+.nav-link:hover::before {
+    width: 100%;
+    transform: translateX(-50%);
+}
+
+.nav-link {
+    position: relative;
+    color: inherit;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    display: block;
+    margin: auto;
+    left: 0;
+    right: 0;
+    bottom: -5px;
+    /* background: #566DFB; */
+    background: white;
+
+    transition: width 0.4s ease, left 0.4s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+
+/* plan cards */
+/* plan cards */
+.card {
+    position: relative;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+  }
+  
+.card-front, .card-back {
+    backface-visibility: hidden;
+    transition: transform 0.7s;
+  }
+  
+.card-front {
+    transform: rotateY(0deg);
+  }
+  
+.card-back {
+    transform: rotateY(180deg);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+.rotate-card {
+    transform: rotateY(180deg);
+  }
+  
+.fade-out {
+    animation: fadeOut 0.7s forwards;
+  }
+  
+@keyframes fadeOut {
+    to {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+  }
