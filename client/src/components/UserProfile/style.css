@@ -1,25 +1,19 @@
-@import url("https://fonts.googleapis.com/css2?family=TomatoGrotesk:wght@300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
 
-/* Apply TomatoGrotesk font globally */
 .font-tomato {
-  font-family: "TomatoGrotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
     sans-serif;
 }
 
-/* Update all existing font classes to use TomatoGrotesk */
 .font {
-  font-family: "TomatoGrotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
     sans-serif;
 }
 
 /* Animated scrolling for client carousel */
 @keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 .animate-scroll {
@@ -34,62 +28,18 @@
   --vaultguard-dark: #064e3b;
 }
 
-/* Sidebar logo and heading section - Updated for VaultGuard */
-.sidebar-header {
-  background: linear-gradient(135deg, #10b981, #059669, #064e3b);
-  background-size: 400% 400%;
-  animation: headerGradientAnimation 8s ease infinite;
-  border-bottom: 2px solid #34d399;
-  padding-bottom: 0rem;
-  width: 255px;
-  margin-left: -24px;
-  margin-top: -24px;
-}
-
-@keyframes headerGradientAnimation {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-/* Center the logo and make it larger */
-.sidebar-header .logo {
-  margin-bottom: 1rem;
-}
-
-.sidebar-header .logo img {
-  width: 100%;
-  height: 180px;
-  display: inline-block;
-  margin: 0 auto;
-}
-
-/* Sidebar background */
-.sidebar {
-  background-color: #1f2937;
-  height: 100vh;
-  overflow-y: auto;
-  overflow-x: hidden;
-  scrollbar-color: #10b981;
-}
-
-/* Folder grid and items - Updated colors */
+/* Folder grid and items */
 .folder-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.5rem;
+  padding: 1rem;
 }
 
 .folder-item {
   background: #ffffff;
   border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(16, 185, 129, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   position: relative;
   overflow: hidden;
   cursor: pointer;
@@ -99,165 +49,129 @@
   align-items: flex-start;
   text-align: left;
   transition: all 0.3s ease;
-  min-height: 250px;
-  width: 240px;
   border: 2px solid transparent;
 }
 
 .folder-item:hover {
-  box-shadow: 0 8px 16px rgba(16, 185, 129, 0.2);
+  box-shadow: 0 8px 16px rgba(16, 185, 129, 0.1);
   border-color: #10b981;
   transform: translateY(-2px);
 }
 
-/* Folder icon with VaultGuard gradient */
+/* Folder icon */
 .folder-icon {
   background: linear-gradient(135deg, #10b981, #34d399);
   color: #ffffff;
   border-radius: 50%;
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: 24px;
-  margin-left: 27%;
-  font-weight: bold;
-  box-shadow: 0 4px 8px rgba(16, 185, 129, 0.3);
-  position: relative;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 8px rgba(16, 185, 129, 0.2);
 }
 
 .folder-icon-counter {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: bold;
 }
 
 .folder-icon-label {
-  font-size: large;
-  font-weight: 600;
+  font-size: 0.875rem;
+  font-weight: 500;
 }
 
-/* Update button colors to VaultGuard theme */
-.add-folder-button {
-  position: fixed;
-  bottom: 6px;
-  right: 6px;
-  background: linear-gradient(to right, #10b981, #059669);
-  transition: transform 0.3s ease;
+/* Form styling */
+.input-field {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  transition: border-color 0.2s ease;
 }
 
-.add-folder-button:hover {
-  transform: scale(1.05);
-}
-
-/* Update filter and search styling */
-.filters-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-  padding: 10px;
-  background-color: #f0fdf4;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.05);
-}
-
-.search-filter:focus {
+.input-field:focus {
+  outline: none;
   border-color: #10b981;
-  box-shadow: 0 0 4px rgba(16, 185, 129, 0.25);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
 }
 
-.filter-button:hover,
-.sort-button:hover {
-  background-color: #f0fdf4;
-  border-color: #10b981;
+/* Button styling */
+.action-button {
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
 }
 
-/* Navigation link hover effects */
-.nav-link:hover {
-  color: #34d399 !important;
-  transition: color 0.3s ease;
-}
-
-/* Form styling updates */
-.login-component .container button {
+.primary-button {
   background-color: #10b981;
-  color: #fff;
-  font-size: 12px;
-  padding: 10px 45px;
-  border: 1px solid transparent;
-  border-radius: 8px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  margin-top: 10px;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  color: white;
 }
 
-.login-component .container button:hover {
+.primary-button:hover {
   background-color: #059669;
-  transform: translateY(-1px);
 }
 
-/* Card animations and effects */
-.card {
-  transition: all 0.3s ease;
+/* Modal/Popup styling */
+.modal-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
 }
 
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(16, 185, 129, 0.15);
+.modal-content {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 28rem;
 }
 
-/* Responsive design improvements */
+/* Responsive design */
 @media (max-width: 768px) {
-  .font-tomato {
-    font-size: 14px;
-  }
-
   .folder-grid {
     grid-template-columns: 1fr;
-    gap: 1rem;
   }
 
   .folder-item {
     width: 100%;
-    min-height: 200px;
   }
 }
 
 /* Loading animations */
 @keyframes pulse {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
 }
 
 .loading {
   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
-/* Success/Error message styling */
+/* Success/Error messages */
 .success-message {
   background-color: #d1fae5;
   border: 1px solid #10b981;
   color: #064e3b;
-  padding: 12px 16px;
-  border-radius: 8px;
-  margin: 10px 0;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin: 1rem 0;
 }
 
 .error-message {
   background-color: #fee2e2;
   border: 1px solid #ef4444;
   color: #7f1d1d;
-  padding: 12px 16px;
-  border-radius: 8px;
-  margin: 10px 0;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin: 1rem 0;
 }
