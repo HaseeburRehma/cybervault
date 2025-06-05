@@ -16,7 +16,6 @@ function LoginForm() {
     try {
       const loginData = { email, password };
       await loginUser(loginData);
-      console.log('User logged in successfully');
       // Redirect to the dashboard or home page
 
       navigate('/userProfile'); // Redirect to home page or login page after logout

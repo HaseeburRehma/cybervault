@@ -105,7 +105,6 @@ router.post('/notes', verifyToken, async (req, res) => {
 router.get('/notes/folder/:folderId', verifyToken, async (req, res) => {
     const { folderId } = req.params;
     const userId = req.decodedToken.id; // Ensure this matches your JWT payload
-    console.log('inside the get api');
     try {
         const notes = await Note.find({ folder: folderId, user: userId });
         res.status(200).json(notes);

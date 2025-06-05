@@ -24,7 +24,6 @@ function RegistrationForm() {
 
     try {
       await registerUser(userData);
-      console.log('User registered successfully');
       // Redirect to login or show a success message
     } catch (error) {
       setError(error.response ? error.response.data.msg : 'Registration failed');
