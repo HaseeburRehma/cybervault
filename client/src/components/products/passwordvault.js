@@ -57,7 +57,6 @@ const PasswordVault = () => {
 
     useEffect(() => {
         AOS.init({ duration: 2000 });
-        console.log('AOS initialized');
     }, []);
 
     const settings = {
@@ -77,7 +76,6 @@ const PasswordVault = () => {
                     <Slider {...settings}>
                         <div>
                             <div className="bg-cover bg-center" style={{ backgroundImage: `url('/images/headimg.png')`, height: '85vh' }}>
-                                {/* Debugging: check if the image path is correct */}
                                 <img src="/images/headimg.png" alt="Slide 1" style={{ display: 'none' }} />
                             </div>
                         </div>

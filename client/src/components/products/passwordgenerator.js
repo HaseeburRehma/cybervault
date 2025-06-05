@@ -58,7 +58,6 @@ const PasswordGenerator = () => {
 
     useEffect(() => {
         AOS.init({ duration: 2000 });
-        console.log('AOS initialized');
     }, []);
 
     const settings = {
@@ -78,7 +77,7 @@ const PasswordGenerator = () => {
                     <Slider {...settings}>
                         <div>
                             <div className="bg-cover bg-center" style={{ backgroundImage: `url('https://t4.ftcdn.net/jpg/06/67/04/01/240_F_667040109_YkiAQqxcVgitoMBncbsEBCqJuO9TxCU7.jpg')`, height: '85vh' }}>
-                                {/* <img src="/images/headimg.png" alt="Slide 1" style={{ display: 'none' }} /> */}
+                                <img src="/images/headimg.png" alt="Slide 1" style={{ display: 'none' }} />
                             </div>
                         </div>
                         <div>

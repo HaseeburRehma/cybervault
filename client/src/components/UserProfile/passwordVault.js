@@ -15,7 +15,6 @@ const PasswordVault = ({ folderId }) => {
     const fetchVaults = async () => {
       try {
         const fetchedVaults = await getVaults(folderId);
-        console.log('Fetched Vaults:', fetchedVaults); // Check this
         setVaults(fetchedVaults);
       } catch (error) {
         console.error('Error fetching vaults:', error);

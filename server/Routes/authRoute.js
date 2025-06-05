@@ -138,8 +138,6 @@ router.post('/signup', async (req, res) => {
     res.status(200).json({
       msg: 'User registered successfully. Please check your email to verify your account.'
     });
-
-    console.log(`User ${user.username} registered successfully. Verification email sent to ${user.email}.`);
   } catch (err) {
     console.error('Error in signup:', err);
     res.status(500).json({ msg: 'Server error' });
@@ -191,8 +189,6 @@ router.post('/login', async (req, res) => {
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '10y' });
     res.status(200).json({ token, userId: user._id });
-
-    console.log(`User ${user.username} logged in successfully.`);
   } catch (err) {
     console.error('Error in login:', err);
     res.status(500).json({ msg: 'Server error' });
@@ -222,8 +218,6 @@ router.post('/forgot-password', async (req, res) => {
 
     await transporter.sendMail(mailOptions);
 
-    console.log(`New password sent to ${email}.`);
-
     res.status(200).json({ msg: 'New password sent to your email.' });
   } catch (err) {
     console.error('Error in forgot password:', err);
@@ -248,8 +242,6 @@ router.post('/change-password', async (req, res) => {
 
     user.password = await bcrypt.hash(newPassword, 10);
     await user.save();
-
-    console.log(`User ${user.username} changed password successfully.`);
 
     res.status(200).json({ msg: 'Password changed successfully.' });
   } catch (err) {

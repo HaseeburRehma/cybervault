@@ -102,7 +102,6 @@ const FeaturedPlans = () => {
       // Decode the token to get the user ID
       const decodedToken = jwtDecode(authToken);
       userId = decodedToken.id; // Extract user ID from the token
-      console.log('user id ',userId);
     } catch (error) {
       console.error("Failed to decode token:", error);
       return;
@@ -133,7 +132,7 @@ const FeaturedPlans = () => {
       });
   
       if (result.error) {
-        console.log(result.error);
+        console.error(result.error);
       }
     } catch (error) {
       console.error("Error:", error);

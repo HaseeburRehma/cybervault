@@ -116,7 +116,6 @@ const Team = () => {
       if (!response.ok) {
         throw new Error(data.message || 'Error sending invitation');
       }
-      console.log('Invitation sent successfully');
     } catch (error) {
       throw new Error(error.message || 'Error sending invitation');
     }

@@ -33,7 +33,7 @@ const Autofill = () => {
             link: '#',
         },
         {
-            id: 1,
+            id: 4,
             icon: '/images/ds1.png', // Replace with the actual icon path
             title: 'Password Generator',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -56,7 +56,6 @@ const Autofill = () => {
 
     useEffect(() => {
         AOS.init({ duration: 2000 });
-        console.log('AOS initialized');
     }, []);
 
     const settings = {
@@ -76,7 +75,6 @@ const Autofill = () => {
                     <Slider {...settings}>
                         <div>
                             <div className="bg-cover bg-center" style={{ backgroundImage: `url('/images/headimg.png')`, height: '85vh' }}>
-                                {/* Debugging: check if the image path is correct */}
                                 <img src="/images/headimg.png" alt="Slide 1" style={{ display: 'none' }} />
                             </div>
                         </div>

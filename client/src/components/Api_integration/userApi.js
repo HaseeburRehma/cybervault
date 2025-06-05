@@ -18,7 +18,6 @@ export const getUserDetails = async (token) => {
 
 
 export const fetchUserDetailsById = async (userId, token) => {
-  console.log("user detail idr ani hy:",userId,'token bhe hy',token);
 
   try {
     const response = await axios.get(`${API_URL}/user/${userId}`, {

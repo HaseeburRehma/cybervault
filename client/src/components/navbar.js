@@ -12,12 +12,10 @@ const Navbar = () => {
 
   useEffect(() => {
     const token = localStorage.getItem("token")
-    console.log("Token retrieved from local storage:", token)
 
     if (token) {
       getUserDetails(token).then((data) => {
         if (data) {
-          console.log("User data retrieved:", data)
           setUser(data)
         }
       })

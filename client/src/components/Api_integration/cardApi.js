@@ -32,7 +32,6 @@ export const createCard = async (data) => {
 
 export const getCards = async (folderId) => {
     try {
-        console.log('folder id is', folderId);
         const response = await api.get(`/?folder=${folderId}`);
         return response.data;
     } catch (error) {

@@ -1,0 +1,31 @@
+version: '3.8'
+services:
+  mongo:
+    image: mongo:6
+    restart: always
+    volumes:
+      - mongo-data:/data/db
+  server:
+    build: ./server
+    ports:
+      - "8000:8000"
+    environment:
+      - PORT=8000
+      - MONGODB_URI=mongodb://mongo:27017/cybervault
+      - JWT_SECRET=changeme
+      - STRIPE_SECRET_KEY=sk_test_dummy
+      - CLIENT_URL=http://localhost:3000
+      - EMAIL_USER=your_email@example.com
+      - EMAIL_PASSWORD=your_email_password
+    depends_on:
+      - mongo
+  client:
+    build: ./client
+    ports:
+      - "3000:3000"
+    environment:
+      - REACT_APP_API_URL=http://localhost:8000
+    depends_on:
+      - server
+volumes:
+  mongo-data:

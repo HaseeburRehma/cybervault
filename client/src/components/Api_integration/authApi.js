@@ -5,7 +5,6 @@ const BASE_URL = 'http://localhost:8000/api/auth';
 export const registerUser = async (userData) => {
   try {
     const response = await axios.post(`${BASE_URL}/signup`, userData);
-    console.log('Registration successful:', response.data);
     return response.data;
   } catch (error) {
     console.error('Error in registration:', error.response ? error.response.data : error.message);
@@ -16,7 +15,6 @@ export const registerUser = async (userData) => {
 export const loginUser = async (loginData) => {
   try {
     const response = await axios.post(`${BASE_URL}/login`, loginData);
-    console.log('Login successful:', response.data);
     localStorage.setItem('token', response.data.token);
     return response.data;
   } catch (error) {
